@@ -1,6 +1,7 @@
-var app = angular.module('minmax', [
+var app = angular.module('cadastroCliente', [
 	'jcs-autoValidate',
-	'angular-ladda'
+	'angular-ladda',
+	'ui.bootstrap'
 ]);
 
 app.run(function (defaultErrorMessageResolver) {
@@ -13,23 +14,10 @@ app.run(function (defaultErrorMessageResolver) {
 );
 
 
-app.controller('MinMaxCtrl', function ($scope, $http) {
+app.controller('CadastroClienteCtrl', function ($scope) {
 	$scope.formModel = {};
 	$scope.submitting = false;
 	$scope.onSubmit = function () {
 		$scope.submitting = true;
-		console.log("Hey i'm submitted!");
-		console.log($scope.formModel);
-
-		$http.post('https://minmax-server.herokuapp.com/register/', $scope.formModel).
-
-			success(function (data) {
-				console.log(":)")
-			}).error(function(data) {
-				console.log(":(")
-			}).finally(function(data){
-				$scope.submitting = false;
-			});
-
 	};
 });
