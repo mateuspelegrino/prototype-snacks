@@ -1,0 +1,70 @@
+<!DOCTYPE html >
+<html lang="en" ng-app="login">
+<head>
+    <meta charset="utf-8">
+    <title>Login - Prototype Snacks</title>
+    <link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../libs/ladda/dist/ladda-themeless.min.css" rel="stylesheet">
+    <link href="../Styles/main.css" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand"
+               href="/">Login
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container main-content" ng-controller="LoginCtrl">
+    <form ng-submit="onSubmit()"
+          novalidate="novalidate">
+        <div class="form-group col-sm-6 col-sm-offset-3" >
+            <label for="username" class="control-label">Usuário</label >
+            <input type="text"
+                   class="form-control"
+                   ng-model="formModel.username"
+                   ng-pattern="/^[A-Za-z0-9_]{1,32}$/"
+                   ng-minlength="7"
+                   ng-pattern-err-type="badUsername"
+                   ng-minlength-err-type="minError"
+                   id="username"
+                   placeholder="Usuário"
+                   required="required"
+                   required-err-type="fieldRequired">
+        </div >
+        <div class="form-group col-sm-6 col-sm-offset-3">
+            <label for="password">Senha</label>
+            <input type="password"
+                   class="form-control"
+                    ng-model="formModel.password"
+                    ng-minlength="6"
+                   ng-minlength-err-type="minError"
+                   id="password"
+                    placeholder="Senha"
+                    required="required"
+                   required-err-type="fieldRequired">
+        </div>
+        <div class="form-actions col-sm-6 col-sm-offset-3">
+            <button class="btn btn-primary"
+                    type="submit"
+                    ladda="submitting"
+                    data-style="expand-right">
+                <span ng-show="submitting">Entrando</span>
+                <span ng-show="!submitting">Entrar</span>
+            </button>
+            <a href="#/register" class="btn btn-link">Cadastrar</a>
+        </div>
+    </form>
+</div>
+
+<script src="../libs/angular/angular.min.js" ></script >
+<script src="../libs/angular-auto-validate/dist/jcs-auto-validate.min.js" ></script >
+<script src="../libs/ladda/dist/spin.min.js"></script>
+<script src="../libs/ladda/dist/ladda.min.js"></script>
+<script src="../libs/angular-ladda/dist/angular-ladda.min.js"></script>
+<script src="../Controllers/login.js" ></script >
+</body>
+</html>
