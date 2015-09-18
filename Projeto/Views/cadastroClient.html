@@ -1,117 +1,132 @@
 <!DOCTYPE html >
-<html lang="en" ng-app="minmax">
-<head >
-	<title >Form Validation - Part 3</title >
-	<link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >
-	<link href="../libs/ladda/dist/ladda-themeless.min.css" rel="stylesheet">
-	<link href="../Styles/main.css" rel="stylesheet" >
-</head >
+<html  lang="pt-br" ng-app="cadastroCliente">
+<head>
+    <meta charset="utf-8"/>
+    <title>Tela de Cadastro</title>
+    <link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../libs/ladda/dist/ladda-themeless.min.css" rel="stylesheet">
+    <link href="../Styles/main.css" rel="stylesheet">
 
-<body >
-<nav class="navbar navbar-inverse navbar-fixed-top" >
-	<div class="container">
-		<div class="navbar-header" >
-			<a class="navbar-brand"
-			   href="/" >Form Validation - Part 3
-			</a >
-		</div >
-	</div >
-</nav >
+</head>
 
-<div class="container main-content" ng-controller="MinMaxCtrl">
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand"
+               href="/">Tela de Cadastro
+            </a>
+        </div>
+    </div>
+</nav>
 
-	<form ng-submit="onSubmit()"
-				novalidate="novalidate">
-		<div class="form-group" >
-			<label for="name" class="control-label">Name</label >
-			<input type="text"
-			       class="form-control"
-			       ng-model="formModel.name"
-			       id="name"
-					   required="required" >
-		</div >
+<div class="container main-content" ng-controller="CadastroClienteCtrl">
 
-		<div class="form-group">
-			<label for="email" class="control-label">Email</label >
-			<input type="email"
-			       class="form-control"
-			       ng-model="formModel.email"
-			       id="email"
-					   required="required" >
-		</div >
+    <form ng-submit="onSubmit()"
+          novalidate="novalidate">
 
-		<div class="form-group" >
-			<label for="username" class="control-label">Username</label >
-			<input type="text"
-			       class="form-control"
-			       ng-model="formModel.username"
-			       ng-pattern="/^[A-Za-z0-9_]{1,32}$/"
-			       ng-minlength="7"
-			       ng-pattern-err-type="badUsername"
-			       id="username"
-			       required="required" >
-		</div >
+        <div class="form-group col-sm-8">
+            <label for="name" class="control-label">Nome do Cliente</label>
+            <input type="text"
+                   class="form-control"
+                   ng-model="formModel.name"
+                   id="name"
+                   required="required">
+        </div>
 
-		<div class="form-group" >
-			<label for="age" class="control-label">Age</label >
-			<input type="number"
-			       class="form-control"
-			       ng-model="formModel.age"
-			       min="18"
-			       max="64"
-			       id="age"
-			       ng-min-err-type="tooYoung"
-			       ng-max-err-type="tooOld"
-			       required="required" >
-		</div >
+        <div class="form-group col-sm-1" >
+            <label for="age" class="control-label">Idade</label>
+            <input type="number"
+                   class="form-control"
+                   ng-model="formModel.age"
+                   id="age"
+                   required="required">
+        </div>
 
-		<div class="form-group" >
-			<label for="sex" class="control-label">Sex</label >
-			<select id="sex"
-							class="form-control"
-							ng-model="formModel.sex"
-							required="required" >
-				<option value="" >Please Choose</option >
-				<option value="male" >Male</option >
-				<option value="female" >Female</option >
-			</select >
-		</div >
+        <div class="form-group col-sm-3">
+            <label for="birthday" class="control-label">Aniversário</label>
+            <input
+                    type="date"
+                    class="form-control"
+                    ng-model="formModel.birthday"
+                    id="birthday"
+                    required="required">
+        </div>
 
-		<div class="form-group" >
-			<label for="password" class="control-label">Password</label >
-			<input type="password"
-			       class="form-control"
-			       ng-model="formModel.password"
-			       id="password"
-			       required="required"
-						 ng-minlength="10">
-		</div >
+        <div class="form-group col-sm-9" >
+            <label for="address" class="control-label">Endereço</label>
+            <input type="email"
+                   class="form-control"
+                   ng-model="formModel.address"
+                   id="address"
+                   required="required">
+        </div>
 
-		<div class="form-group">
-			<button class="btn btn-primary"
-					type="submit"
-					ladda="submitting"
-					data-style="expand-right"
-					>
-				<span ng-show="submitting">Registering</span>
-				<span ng-show="!submitting">Register</span>
-			</button>
-		</div>
+        <div class="form-group col-sm-3">
+            <label for="neighborhood" class="control-label">Bairro</label>
+            <input type="text"
+                   class="form-control"
+                   ng-model="formModel.neighborhood"
+                   id="neighborhood"
+                   required="required">
+        </div>
 
-	</form >
+        <div class="form-group col-sm-4">
+            <label for="city" class="control-label">Cidade</label>
+            <input type="text"
+                   class="form-control"
+                   ng-model="formModel.city"
+                   id="city"
+                   required="required">
+        </div>
 
-	<pre>{{ formModel | json }}</pre>
+        <div class="form-group col-sm-4">
+            <label for="phonenumber" class="control-label">Telefone</label>
+            <input type="number"
+                    class="form-control"
+                    ng-model="formModel.phoneNumber"
+                    id="phonenumber"
+                    required="required">
 
-</div >
+        </div>
+
+        <div class="form-group col-sm-4">
+            <label for="celphonenumber" class="control-label">Celular</label>
+            <input type="number"
+                   class="form-control"
+                   ng-model="formModel.celphoneNumber"
+                   id="celphonenumber"
+                   >
+        </div>
 
 
-<script src="../libs/angular/angular.min.js" ></script >
-<script src="../libs/angular-auto-validate/dist/jcs-auto-validate.min.js" ></script >
+        <div class="form-actions col-sm-1">
+            <button class="btn btn-primary"
+                    type="submit"
+                    ladda="submitting"
+                    data-style="expand-right"
+                    >
+                <span ng-show="submitting">Salvando</span>
+                <span ng-show="!submitting">Salvar</span>
+            </button>
+        </div>
+
+        <br>
+
+        <pre class="form-group">{{submitting}}</pre>
+
+    </form>
+
+</div>
+
+
+<script src="../libs/angular/angular.min.js"></script>
+<script src="../libs/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
 <script src="../libs/ladda/dist/spin.min.js"></script>
 <script src="../libs/ladda/dist/ladda.min.js"></script>
 <script src="../libs/angular-ladda/dist/angular-ladda.min.js"></script>
-<script src="../Controllers/cadastroClient.js" ></script >
+<script src="../Controllers/cadastroClient.js"></script>
 
 
-</body >
-</html >
+</body>
+</html>
