@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html  lang="pt-br" ng-app="cadastroCliente">
+<html lang="pt-br" ng-app="cadastroCliente">
 <head>
     <meta charset="utf-8"/>
     <title>Tela de Cadastro</title>
@@ -34,16 +34,18 @@
                    required="required">
         </div>
 
-        <div class="form-group col-sm-1" >
+        <div class="form-group col-sm-2">
             <label for="age" class="control-label">Idade</label>
             <input type="number"
                    class="form-control"
                    ng-model="formModel.age"
                    id="age"
+                   ng-minlength="5"
+                   ng-maxlength="130"
                    required="required">
         </div>
 
-        <div class="form-group col-sm-3">
+        <div class="form-group col-sm-2">
             <label for="birthday" class="control-label">Aniversário</label>
             <input
                     type="date"
@@ -53,9 +55,9 @@
                     required="required">
         </div>
 
-        <div class="form-group col-sm-9" >
+        <div class="form-group col-sm-9">
             <label for="address" class="control-label">Endereço</label>
-            <input type="email"
+            <input type="text"
                    class="form-control"
                    ng-model="formModel.address"
                    id="address"
@@ -83,20 +85,24 @@
         <div class="form-group col-sm-4">
             <label for="phonenumber" class="control-label">Telefone</label>
             <input type="number"
-                    class="form-control"
-                    ng-model="formModel.phoneNumber"
-                    id="phonenumber"
-                    required="required">
+                   class="form-control"
+                   ng-model="formModel.phoneNumber"
+                   id="phonenumber"
+                   ng-minlength="7"
+                   ng-maxlength="11"
+                   required="required">
 
         </div>
 
         <div class="form-group col-sm-4">
-            <label for="celphonenumber" class="control-label">Celular</label>
+            <label for="cellphonenumber" class="control-label">Celular</label>
             <input type="number"
                    class="form-control"
-                   ng-model="formModel.celphoneNumber"
-                   id="celphonenumber"
-                   >
+                   ng-model="formModel.cellphoneNumber"
+                   ng-minlength="8"
+                   ng-maxlength="11"
+                   id="cellphonenumber"
+                    >
         </div>
 
 
@@ -106,14 +112,20 @@
                     ladda="submitting"
                     data-style="expand-right"
                     >
+                <span class="glyphicon glyphicon-ok"></span>
                 <span ng-show="submitting">Salvando</span>
                 <span ng-show="!submitting">Salvar</span>
             </button>
         </div>
 
-        <br>
-
-        <pre class="form-group">{{submitting}}</pre>
+        <div class="form-actions col-sm-1">
+            <button class="btn btn-info"
+                    type="submit"
+                    >
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span>Voltar</span>
+            </button>
+        </div>
 
     </form>
 

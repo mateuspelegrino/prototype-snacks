@@ -1,7 +1,6 @@
 var app = angular.module('cadastroCliente', [
 	'jcs-autoValidate',
-	'angular-ladda',
-	'ui.bootstrap'
+	'angular-ladda'
 ]);
 
 app.run(function (defaultErrorMessageResolver) {
