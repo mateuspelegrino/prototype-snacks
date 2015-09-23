@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br"  ng-app="cadastroUsuario">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login - Prototype Snacks</title>
+    <link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../libs/ladda/dist/ladda-themeless.min.css" rel="stylesheet">
+    <link href="../Styles/main.css" rel="stylesheet">
+    <script src="https://code.angularjs.org/1.3.0-rc.2/angular.js"></script>
+    <script src="https://code.angularjs.org/1.3.0-rc.2/angular-messages.js"></script>
+
+    <script src="../Controllers/cadastroUsuario.js" charset="UTF-8"></script>
+</head>
+
+<body class="container" ng-controller="CadastroUsuarioCtrl as cadastro">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand"
+               href="cadastroUsuario.html">Cadastro Usuário
+            </a>
+        </div>
+    </div>
+</nav>
+<h3>{{ cadastro.message }}</h3>
+<form name="cadastroForm" novalidate
+      ng-submit="cadastro.submit(cadastroForm.$valid)">
+    <div class="form-group col-sm-6 col-sm-offset-3">
+        <label for="name" class="control-label">Nome</label>
+        <input type="text"
+               class="form-control"
+               ng-model="formModel.name"
+               id="name"
+               required>
+    </div>
+    <div class="form-group col-sm-6 col-sm-offset-3">
+        <label>Usuário</label>
+        <input type="text" name="username" class="form-control" ng-model="cadastro.user.username" required />
+        <div ng-messages="cadastroForm.username.$error" ng-messages-include="messages.html"></div>
+    </div>
+    <div class="form-group col-sm-6 col-sm-offset-3">
+        <label>Senha</label>
+        <input type="password" name="password" class="form-control" ng-model="cadastro.user.password" required />
+        <div ng-messages="cadastroForm.password.$error" ng-messages-include="messages.html"></div>
+    </div>
+    <div class="form-group col-sm-6 col-sm-offset-3">
+        <label>Confirme a senha</label>
+        <input type="password" name="confirmPassword" class="form-control"
+               ng-model="cadastro.user.confirmPassword"
+               required compare-to="cadastro.user.password" />
+        <div ng-messages="cadastroForm.confirmPassword.$error" ng-messages-include="messages.html"></div>
+    </div>
+    <div class="form-group col-sm-6 col-sm-offset-3">
+        <label>Função</label>
+        <select class="form-control" ng-model="cadastro.user.funcao" required
+            ng-options="func.name for func in funcoes track by func.id"></select>
+        {{cadastro.user.funcao | json}}
+    </div>
+    <div class="form-group col-sm-6 col-sm-offset-3">
+        <button class="btn btn-primary"
+                type="submit"
+                ladda="submitting"
+                data-style="expand-right">
+            <span ng-show="submitting">Cadastrando</span>
+            <span ng-show="!submitting">Cadastrar</span>
+        </button>
+    </div>
+</form>
+</body>
+
+</html>
