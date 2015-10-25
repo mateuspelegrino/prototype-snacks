@@ -1,5 +1,25 @@
 // This is the sample data for this lesson
-var sample = [
+var app = angular.module('codecraft',[]);
+app.controller('PersonsController',function($scope){
+	$scope.selectedIndex = null;
+	$scope.selectedPerson = null;
+
+	$scope.search="";
+
+	$scope.selectPerson = function(index, person){
+		$scope.selectedIndex = index;
+		$scope.selectedPerson = person;
+	};
+
+	$scope.sensitiveSearch = function(person){
+		if ($scope.search){
+			return person.name.indexOf($scope.search) == 0 || person.email.indexOf($scope.search) == 0;
+		}
+		return true;
+	};
+
+
+	$scope.persons = [
 		{
 			"name": "Gregory Huffman",
 			"email": "Praesent@pedenec.net",
@@ -901,3 +921,4 @@ var sample = [
 			"country": "Taiwan"
 		}
 	]
+});
